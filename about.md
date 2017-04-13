@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+I'm a final year undergraduate student at Pune Institute of Computer Technology. 
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+Alace to include any other types of information that you'd like to include about yourself.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[yash.katariya10@gmail.com](mailto:yash.katariya10@gmail.com)
