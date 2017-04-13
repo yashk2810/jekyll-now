@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I'm a final year undergraduate student at Pune Institute of Computer Technology. 
+I'm a final year undergraduate student at Pune Institute of Computer Technology. I am passionate about 
 
 ### More Information
 
