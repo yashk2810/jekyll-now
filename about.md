@@ -4,11 +4,15 @@ title: About
 permalink: /about/
 ---
 
-I'm a final year undergraduate student at Pune Institute of Computer Technology. I am passionate about 
+I'm a final year undergraduate student at Pune Institute of Computer Technology majoring in Computer Engineering. I have done an internship at E2open working on retail analytics and maximizing the sale of an item by optimizing its price.
 
-### More Information
+Moreover, I have participated in machine learning contests on Analytics Vidhya.
 
-Alace to include any other types of information that you'd like to include about yourself.
+I have worked on Deep learning(CNN's, RNN's) also. Check out my <a href="https://github.com/yashk2810"  target="_blank">github</a>.
+
+Deep learning is changing the industry and applying it in every aspect of our lives would be revolutionary. I want to be a part of that journey.
+
+
 
 ### Contact me
 
