@@ -25,7 +25,7 @@ In the above example, the image is a 5 x 5 matrix and the filter going over it i
 
 First, we import all the necessary libraries required.
 
-```python
+{% highlight python %}
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -39,7 +39,8 @@ from keras.utils import np_utils
 from keras.layers import Conv2D, MaxPooling2D, ZeroPadding2D, GlobalAveragePooling2D
 from keras.layers.advanced_activations import LeakyReLU 
 from keras.preprocessing.image import ImageDataGenerator
-```
+{% endhighlight %}
+
 
 The MNIST dataset is provided by Keras.
 ```python
