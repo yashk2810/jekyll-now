@@ -65,7 +65,9 @@ X_test/=255
 ```
 Now the shape of X_train is (60000, 28, 28, 1). As all the images are in grayscale, the number of channels is 1. If it was a color image, then the number of channels would be 3 (R, G, B).
 
+Here we’ve rescaled the image data so that each pixel lies in the interval [0, 1] instead of [0, 255]. It is always a good idea to normalize the input so that each dimension has approximately the same scale.
 
+Now, we need to one-hot encode the labels i.e. Y_train and Y_test. 
 
 
 
