@@ -11,4 +11,4 @@ The state of the art result for MNIST dataset has an accuracy of 99.79%. In this
 
 ![MNIST](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/mnist.png "MNIST")
 
-MNIST dataset consists of images of handwritten digits. It has 60,000 images under the training set and 10,000 images under the test set.
+MNIST dataset contains images of handwritten digits. It has 60,000 images under the training set and 10,000 images under the test set. We will use Keras library with Tensorflow backend to classify the images.
