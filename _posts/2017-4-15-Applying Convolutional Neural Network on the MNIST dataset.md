@@ -177,11 +177,21 @@ It's Training Time!!
 model.fit_generator(train_generator, steps_per_epoch=60000//64, epochs=5, 
                     validation_data=test_generator, validation_steps=10000//64)
 ```
-![Result](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/result.jpg "Result")
+![Result](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/result_mnist.jpg "Result")
 
+We achived 99.55% accuracy using this simple model. To improve the result, we can do ensembling of models. We can also use pseudo labelling to improve the accuracy.
 
+## Visualization of Convolutional Layers
 
+This is what a CNN learns. As you can see, some filters have learnt to recognize edges, curves, etc. This is the output of the first ReLU activation layer. 
 
+![Conv](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/vis_mnist_conv.png "Conv")
+
+<br />
+
+You can find the entire code <a href='https://github.com/yashk2810/MNIST-Keras/blob/master/Notebook/MNIST_keras_CNN-99.55%25.ipynb' target="_blank">here</a>.
+
+The code for visualization of Convolutional Layers can be found <a href="https://github.com/yashk2810/Visualization-of-Convolutional-Layers/blob/master/Visualizing%20Filters%20Python3%20Theano%20Backend.ipynb" target="_blank">here</a>. I have used Theano as a backend for this code.
 
 
 
