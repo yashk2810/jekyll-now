@@ -19,3 +19,25 @@ A convolution in CNN is nothing but a element wise multiplication i.e. dot produ
 
 ![Convolution](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/convolution.gif "Convolution")
 
+In the above example, the image is a 5 x 5 matrix and the filter going over it is a 3 x 3 matrix. A convolution operation takes place between the image and the filter and the convolved feature is generated. Each filter in a CNN, learns different characteristic of an image. 
+
+## Implementation
+
+First, we import all the necessary libraries required.
+
+```Python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+%matplotlib inline
+from keras.datasets import mnist
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Activation, Flatten
+from keras.optimizers import Adam
+from keras.layers.normalization import BatchNormalization
+from keras.utils import np_utils
+from keras.layers import Conv2D, MaxPooling2D, ZeroPadding2D, GlobalAveragePooling2D
+from keras.layers.advanced_activations import LeakyReLU 
+from keras.preprocessing.image import ImageDataGenerator
+```
+
