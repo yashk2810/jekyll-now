@@ -127,5 +127,16 @@ The second layer is the Activation layer. We have used ReLU (rectified linear un
 
 The third layer is the MaxPooling layer. MaxPooling layer is used to down-sample the input to enable the model to make assumptions about the features so as to reduce over-fitting. It also reduces the number of parameters to learn, reducing the training time.
 
-It is a best practice to always do BatchNormalization. BatchNormalization normalizes the matrix after it is been through a convolution layer. 
+It's a best practice to always do BatchNormalization. BatchNormalization normalizes the matrix after it is been through a convolution layer so that the scale of each dimension remains the same. Normalized matrix is immune to exploding gradients. 
+
+After creating all the convolutional layers, we need to flatten them, so that they can act as an input to the Dense layers.
+
+Dense layers are keras's alias for Fully connected layers. These layers give the ability to classify the features learned by the CNN.
+
+Dropout is the method used to reduce overfitting. It forces the model to learn multiple independent representations of the same data by randomly disabling neurons in the learning phase. In our model, dropout will randomnly disable 20% of the neurons.
+
+The last layer is the Dense layer with 10 neurons. The neurons in this layer should be equal to the number of classes we want to predict as this is the output layer. 
+
+
+
 
