@@ -4,6 +4,7 @@ title: Applying Convolutional Neural Network on the MNIST dataset
 ---
 ![CNN](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/CNNArchitecture.jpg "CNN")
 <br />
+
 Convolutional Neural Networks have changed the way we classify images. It is being used in almost all the computer vision tasks. From 2012, CNN's have ruled the Imagenet competition, dropping the classification error rate each year. MNIST is the most studied dataset (<a href='https://www.kaggle.com/benhamner/d/benhamner/nips-papers/popular-datasets-over-time' target="_blank">link</a>). 
 
 The state of the art result for MNIST dataset has an accuracy of 99.79%. In this article, we will achieve an accuracy of 99.55%.
@@ -168,7 +169,15 @@ We have to create batches, so that we use less memory. Moreover, we can also tra
 train_generator = gen.flow(X_train, Y_train, batch_size=64)
 test_generator = test_gen.flow(X_test, Y_test, batch_size=64)
 ```
+<br />
 
+It's Training Time!!
+
+```python
+model.fit_generator(train_generator, steps_per_epoch=60000//64, epochs=5, 
+                    validation_data=test_generator, validation_steps=10000//64)
+```
+![Result](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/result.jpg "Result")
 
 
 
