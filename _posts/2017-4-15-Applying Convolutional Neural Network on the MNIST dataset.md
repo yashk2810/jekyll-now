@@ -154,7 +154,7 @@ The Adam optimizer is an improvement over SGD(Stochastic Gradient Descent). The 
 
 <br />
 
-To reduce over-fitting, we use another technique known as Data Augmentation. Data augmentation rotates, shears, zooms, etc the image so that the model learns to generalize and not remember specific data. If the model overfits, it will perform very well on the images that it already knows but will fail if new image are given to it. 
+To reduce over-fitting, we use another technique known as Data Augmentation. Data augmentation rotates, shears, zooms, etc the image so that the model learns to generalize and not remember specific data. If the model overfits, it will perform very well on the images that it already knows but will fail if new images are given to it. 
 
 ```python
 gen = ImageDataGenerator(rotation_range=8, width_shift_range=0.08, shear_range=0.3,
