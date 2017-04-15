@@ -193,6 +193,7 @@ You can find the entire code <a href='https://github.com/yashk2810/MNIST-Keras/b
 
 The code for visualization of Convolutional Layers can be found <a href="https://github.com/yashk2810/Visualization-of-Convolutional-Layers/blob/master/Visualizing%20Filters%20Python3%20Theano%20Backend.ipynb" target="_blank">here</a>. I have used Theano as a backend for this code.
 
-
+<br />
+Ciao :cake:
 
 
