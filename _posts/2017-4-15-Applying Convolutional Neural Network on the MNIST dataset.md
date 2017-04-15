@@ -125,6 +125,6 @@ Keras allows us to specify the number of filters we want and the size of the fil
 
 The second layer is the Activation layer. We have used ReLU (rectified linear unit) as our activation function. ReLU function is f(x) = max(0, x), where x is the input. It sets all negative values in the matrix 'x' to 0 and keeps all the other values constant. It is the most used activation function since it reduces training time and prevents the problem of vanishing gradients.
 
-The third layer is the MaxPooling layer. 
+The third layer is the MaxPooling layer. MaxPooling layer is used to down-sample the input to enable the model to make assumptions about the features so as to reduce over-fitting. It also reduces the number of parameters to learn, hence reducing the training time.
 
 
