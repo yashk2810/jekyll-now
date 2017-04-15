@@ -76,7 +76,7 @@ Y_train = np_utils.to_categorical(y_train, number_of_classes)
 Y_test = np_utils.to_categorical(y_test, number_of_classes)
 ```
 Y_train[0] = [0.,  0.,  0.,  0.,  0.,  1.,  0.,  0.,  0.,  0.] since the label representated by it is 5.  
-
+<br />
 
 Let's create the model that will classify the images (the most interesting part!!).
 
