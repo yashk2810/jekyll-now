@@ -25,7 +25,7 @@ In the above example, the image is a 5 x 5 matrix and the filter going over it i
 
 First, we import all the necessary libraries required.
 
-{% highlight python %}
+{% highlight python linenos%}
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -43,9 +43,9 @@ from keras.preprocessing.image import ImageDataGenerator
 
 
 The MNIST dataset is provided by Keras.
-```python
+{% highlight python linenos%}
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
-```
+{% endhighlight %}
 The shape of X_train is (60000, 28, 28). Each image has 28 x 28 resolution. 
 The shape of X_test is (10000, 28, 28)
 
