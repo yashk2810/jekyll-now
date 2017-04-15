@@ -41,3 +41,14 @@ from keras.layers.advanced_activations import LeakyReLU
 from keras.preprocessing.image import ImageDataGenerator
 ```
 
+The MNIST dataset is provided by Keras.
+```Python
+(X_train, y_train), (X_test, y_test) = mnist.load_data()
+print("X_train original shape", X_train.shape)
+print("y_train original shape", y_train.shape)
+print("X_test original shape", X_test.shape)
+print("y_test original shape", y_test.shape)
+```
+
+
+
