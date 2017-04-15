@@ -150,6 +150,25 @@ The cross-entropy loss calculates the error rate between the predicted value and
 
 The Adam optimizer is an improvement over SGD(Stochastic Gradient Descent). The optimizer is responsible for updating the weights of the neurons via backpropagation. It calculates the derivative of the loss function with respect to each weight and subtracts it from the weight. **This is how a neural network learns**.
 
+<br />
+
+To reduce over-fitting, we use another technique known as Data Augmentation. Data augmentation rotates, shears, zooms, etc the image so that the model learns to generalize and not remember specific data. If the model overfits, it will perform very well on the images that it already knows but will fail if new image are given to it. 
+
+```python
+gen = ImageDataGenerator(rotation_range=8, width_shift_range=0.08, shear_range=0.3,
+                         height_shift_range=0.08, zoom_range=0.08)
+
+test_gen = ImageDataGenerator()
+```
+This is how we can do Data Augmentation in Keras. You can play with the values and check if it improves the accuracy of the model.
+
+We have to create batches, so that we use less memory. Moreover, we can also train our model faster by creating batches. Here we are using batch of 64, so the model will take 64 images at a time and train on them. 
+```python
+train_generator = gen.flow(X_train, Y_train, batch_size=64)
+test_generator = test_gen.flow(X_test, Y_test, batch_size=64)
+```
+
+
 
 
 
