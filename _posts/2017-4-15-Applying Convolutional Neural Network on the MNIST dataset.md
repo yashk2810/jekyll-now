@@ -11,7 +11,7 @@ The state of the art result for MNIST dataset has an accuracy of 99.79%. In this
 
 ![MNIST](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/mnist.png "MNIST")
 
-MNIST dataset contains images of handwritten digits. It has 60,000 images under the training set and 10,000 images under the test set. We will use the Keras library with Tensorflow backend to classify the images.
+MNIST dataset contains images of handwritten digits. It has 60,000 grayscale images under the training set and 10,000 grayscale images under the test set. We will use the Keras library with Tensorflow backend to classify the images.
 
 ## What is a Convolutional Neural Network?
 
@@ -25,7 +25,7 @@ In the above example, the image is a 5 x 5 matrix and the filter going over it i
 
 First, we import all the necessary libraries required.
 
-```Python
+```python
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -42,13 +42,12 @@ from keras.preprocessing.image import ImageDataGenerator
 ```
 
 The MNIST dataset is provided by Keras.
-```Python
+```python
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
-print("X_train original shape", X_train.shape)
-print("y_train original shape", y_train.shape)
-print("X_test original shape", X_test.shape)
-print("y_test original shape", y_test.shape)
 ```
+The shape of X_train is (60000, 28, 28). Each image has 28 x 28 resolution. 
+The shape of X_test is (10000, 28, 28)
+
 
 
 
