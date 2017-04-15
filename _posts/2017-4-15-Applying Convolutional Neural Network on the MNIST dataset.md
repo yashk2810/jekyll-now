@@ -43,17 +43,17 @@ from keras.preprocessing.image import ImageDataGenerator
 
 
 The MNIST dataset is provided by Keras.
-{% highlight python %}
+```python
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
-{% endhighlight %}
+```
 The shape of X_train is (60000, 28, 28). Each image has 28 x 28 resolution. 
 The shape of X_test is (10000, 28, 28).
 
 The input shape that a CNN accepts should be in a specific format. If you are using Tensorflow, the format should be (batch, height, width, channels). If you are using Theano, the format should be (batch, channels, height, width).
 
 So, let's reshape our input.
-```python
 
+```python
 X_train = X_train.reshape(X_train.shape[0], 28, 28, 1)
 X_test = X_test.reshape(X_test.shape[0], 28, 28, 1)
 
@@ -67,7 +67,17 @@ Now the shape of X_train is (60000, 28, 28, 1). As all the images are in graysca
 
 Here we’ve rescaled the image data so that each pixel lies in the interval [0, 1] instead of [0, 255]. It is always a good idea to normalize the input so that each dimension has approximately the same scale.
 
-Now, we need to one-hot encode the labels i.e. Y_train and Y_test. 
+Now, we need to one-hot encode the labels i.e. Y_train and Y_test. In one-hot encoding an integer is converted to an array which contains only one '1' and the rest elements are '0'. Why do we need to one-hot encode the labels? We will come back to it.
+
+```python
+number_of_classes = 10
+
+Y_train = np_utils.to_categorical(y_train, number_of_classes)
+Y_test = np_utils.to_categorical(y_test, number_of_classes)
+```
+Y_train[0] = [0.,  0.,  0.,  0.,  0.,  1.,  0.,  0.,  0.,  0.] since the label representated by it is 5.
+
+
 
 
 
