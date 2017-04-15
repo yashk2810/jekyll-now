@@ -81,7 +81,7 @@ Y_train[0] = [0.,  0.,  0.,  0.,  0.,  1.,  0.,  0.,  0.,  0.] since the label r
 Let's create the model that will classify the images (the most interesting part!!).
 
 ```python
-# Three steps to Convolution
+# Three steps to create a CNN
 # 1. Convolution
 # 2. Activation
 # 3. Polling
@@ -121,6 +121,10 @@ model.add(Dense(10))
 model.add(Activation('softmax'))
 ```
 
+Keras allows us to specify the number of filters we want and the size of the filters. So, in our first layer, 32 is number of filters and (3, 3) is the size of the filter. We also need to specify the shape of the input which is (28, 28, 1), but we have to specify it only once.
 
+The second layer is the Activation layer. We have used ReLU (rectified linear unit) as our activation function. ReLU function is f(x) = max(0, x), where x is the input. It sets all negative values in the matrix 'x' to 0 and keeps all the other values constant. It is the most used activation function since it reduces training time and prevents the problem of vanishing gradients.
+
+The third layer is the MaxPooling layer. 
 
 
