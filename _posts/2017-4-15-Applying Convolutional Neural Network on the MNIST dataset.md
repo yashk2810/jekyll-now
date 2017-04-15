@@ -196,6 +196,6 @@ The code for visualization of Convolutional Layers can be found <a href="https:/
 <br />
 Ciao   
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-text="Check out this AWESOME question" data-lang="en" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-text="Check out this AWESOME article" data-lang="en" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
