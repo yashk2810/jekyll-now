@@ -25,7 +25,7 @@ In the above example, the image is a 5 x 5 matrix and the filter going over it i
 
 First, we import all the necessary libraries required.
 
-{% highlight python linenos%}
+{% highlight python %}
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -43,11 +43,30 @@ from keras.preprocessing.image import ImageDataGenerator
 
 
 The MNIST dataset is provided by Keras.
-{% highlight python linenos%}
+{% highlight python %}
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 {% endhighlight %}
 The shape of X_train is (60000, 28, 28). Each image has 28 x 28 resolution. 
-The shape of X_test is (10000, 28, 28)
+The shape of X_test is (10000, 28, 28).
+
+The input shape that a CNN accepts should be in a specific format. If you are using Tensorflow, the format should be (batch, height, width, channels). If you are using Theano, the format should be (batch, channels, height, width).
+
+So, let's reshape our input.
+```python
+
+X_train = X_train.reshape(X_train.shape[0], 28, 28, 1)
+X_test = X_test.reshape(X_test.shape[0], 28, 28, 1)
+
+X_train = X_train.astype('float32')
+X_test = X_test.astype('float32')
+
+X_train/=255
+X_test/=255
+```
+Now the shape of X_train is (60000, 28, 28, 1). As all the images are in grayscale, the number of channels is 1. If it was a color image, then the number of channels would be 3 (R, G, B).
+
+
+
 
 
 
