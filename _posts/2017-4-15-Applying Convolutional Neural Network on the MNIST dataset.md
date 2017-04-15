@@ -67,7 +67,7 @@ Now the shape of X_train is (60000, 28, 28, 1). As all the images are in graysca
 
 Here we’ve rescaled the image data so that each pixel lies in the interval [0, 1] instead of [0, 255]. It is always a good idea to normalize the input so that each dimension has approximately the same scale.
 
-Now, we need to one-hot encode the labels i.e. Y_train and Y_test. In one-hot encoding an integer is converted to an array which contains only one '1' and the rest elements are '0'. Why do we need to one-hot encode the labels? We will come back to it.
+Now, we need to one-hot encode the labels i.e. Y_train and Y_test. In one-hot encoding an integer is converted to an array which contains only one '1' and the rest elements are '0'.
 
 ```python
 number_of_classes = 10
@@ -137,7 +137,7 @@ Dropout is the method used to reduce overfitting. It forces the model to learn m
 
 The second last layer is the Dense layer with 10 neurons. The neurons in this layer should be equal to the number of classes we want to predict as this is the output layer.  
 
-The last layer is the Softmax Activation layer. We use softmax activation in the last layer to calculate the probabilities of each class. 
+The last layer is the Softmax Activation layer. Softmax activation enables us to calculate the output based on the probabilities. Each class is assigned a probability and the class with the maximum probability is the model's output for the input.
 
 <br />
 
@@ -146,6 +146,11 @@ Now we need to compile the model.
 ```python
 model.compile(loss='categorical_crossentropy', optimizer=Adam(), metrics=['accuracy'])
 ```
+The cross-entropy loss calculates the error rate between the predicted value and the original value. The formula for calculating cross-entropy loss is given <a href="https://en.wikipedia.org/wiki/Cross_entropy" target="_blank">here</a>. Categorical is used because there are 10 classes to predict from. If there were 2 classes, we would have used binary_crossentropy.
+
+The Adam optimizer is an improvement over SGD(Stochastic Gradient Descent). The optimizer is responsible for updating the weights of the neurons via backpropagation. It calculates the derivative of the loss function with respect to each weight and subtracts it from the weight. **This is how a neural network learns**.
+
+
 
 
 
