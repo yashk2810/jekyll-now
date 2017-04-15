@@ -129,7 +129,7 @@ The second layer is the Activation layer. We have used ReLU (rectified linear un
 
 The third layer is the MaxPooling layer. MaxPooling layer is used to down-sample the input to enable the model to make assumptions about the features so as to reduce over-fitting. It also reduces the number of parameters to learn, reducing the training time.
 
-It's a best practice to always do BatchNormalization. BatchNormalization normalizes the matrix after it is been through a convolution layer so that the scale of each dimension remains the same. Normalized matrix is immune to exploding gradients. 
+It's a best practice to always do BatchNormalization. BatchNormalization normalizes the matrix after it is been through a convolution layer so that the scale of each dimension remains the same. It reduces the training time significantly. 
 
 After creating all the convolutional layers, we need to flatten them, so that they can act as an input to the Dense layers.
 
