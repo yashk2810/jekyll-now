@@ -78,7 +78,48 @@ Y_test = np_utils.to_categorical(y_test, number_of_classes)
 Y_train[0] = [0.,  0.,  0.,  0.,  0.,  1.,  0.,  0.,  0.,  0.] since the label representated by it is 5.
 
 
+Let's create the model that will classify the images (the most interesting part!!).
 
+```python
+# Three steps to Convolution
+# 1. Convolution
+# 2. Activation
+# 3. Polling
+# Repeat Steps 1,2,3 for adding more hidden layers
+
+# 4. After that make a fully connected network
+# This fully connected network gives ability to the CNN
+# to classify the samples
+
+model = Sequential()
+
+model.add(Conv2D(32, (3, 3), input_shape=(28,28,1)))
+model.add(Activation('relu'))
+BatchNormalization(axis=1)
+model.add(Conv2D(32, (3, 3)))
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2,2)))
+
+BatchNormalization(axis=1)
+model.add(Conv2D(64,(3, 3)))
+model.add(Activation('relu'))
+BatchNormalization(axis=1)
+model.add(Conv2D(64, (3, 3)))
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2,2)))
+
+model.add(Flatten())
+
+# Fully connected layer
+BatchNormalization()
+model.add(Dense(512))
+model.add(Activation('relu'))
+BatchNormalization()
+model.add(Dropout(0.2))
+model.add(Dense(10))
+
+model.add(Activation('softmax'))
+```
 
 
 
