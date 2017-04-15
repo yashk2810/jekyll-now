@@ -135,7 +135,19 @@ Dense layers are keras's alias for Fully connected layers. These layers give the
 
 Dropout is the method used to reduce overfitting. It forces the model to learn multiple independent representations of the same data by randomly disabling neurons in the learning phase. In our model, dropout will randomnly disable 20% of the neurons.
 
-The last layer is the Dense layer with 10 neurons. The neurons in this layer should be equal to the number of classes we want to predict as this is the output layer. 
+The second last layer is the Dense layer with 10 neurons. The neurons in this layer should be equal to the number of classes we want to predict as this is the output layer.  
+
+The last layer is the Softmax Activation layer. We use softmax activation in the last layer to calculate the probabilities of each class. 
+
+<br />
+
+Now we need to compile the model.
+
+```python
+model.compile(loss='categorical_crossentropy', optimizer=Adam(), metrics=['accuracy'])
+```
+
+
 
 
 
