@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I'm a final year undergraduate student at Pune Institute of Computer Technology majoring in Computer Engineering. I have done an internship at E2open working on retail analytics and maximizing the sale of an item by optimizing its price.
+I'm a final year undergraduate student at Pune Institute of Computer Technology majoring in Computer Engineering. I have done an internship at <a href="https://www.e2open.com/" target="_blank">E2open</a> working on retail analytics and maximizing the sale of an item by optimizing its price.
 
 Moreover, I have participated in machine learning contests on Analytics Vidhya.
 
