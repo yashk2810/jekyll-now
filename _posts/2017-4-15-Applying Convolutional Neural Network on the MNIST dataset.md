@@ -193,7 +193,7 @@ You can find the entire code <a href='https://github.com/yashk2810/MNIST-Keras/b
 
 The code for visualization of Convolutional Layers can be found <a href="https://github.com/yashk2810/Visualization-of-Convolutional-Layers/blob/master/Visualizing%20Filters%20Python3%20Theano%20Backend.ipynb" target="_blank">here</a>. I have used Theano as a backend for this code.
 
-This is an awesome neural network 3D simulation based on the MNIST dataset.
+This is an awesome neural network 3D simulation video based on the MNIST dataset.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3JQ3hYko51Y?ecver=1" frameborder="0" allowfullscreen></iframe>
 
 <br />
