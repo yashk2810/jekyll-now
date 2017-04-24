@@ -23,6 +23,14 @@ A convolution in CNN is nothing but a element wise multiplication i.e. dot produ
 
 In the above example, the image is a 5 x 5 matrix and the filter going over it is a 3 x 3 matrix. A convolution operation takes place between the image and the filter and the convolved feature is generated. Each filter in a CNN, learns different characteristic of an image. 
 
+## Installing Keras
+
+Keras is a high-level neural network API, written in Python which runs on top of either Tensorflow or Theano. You can install Keras from <a href="https://keras.io/#installation">here</a>.
+
+Tensorflow was developed by the Google Brain team. To learn more about it, visit there official <a href="https://www.tensorflow.org/">website</a>.
+
+Keras was written to simplify the construction of neural nets, as tensorflow's API is very verbose. Keras makes everything very easy and you will see it in action below. If you want to explore the tensorflow implementation of the MNIST dataset, you can find it <a href="https://www.tensorflow.org/get_started/mnist/pros">here</a>.
+
 ## Implementation
 
 First, we import all the necessary libraries required.
