@@ -1,7 +1,9 @@
 ---
 layout: post
 title: Applying Convolutional Neural Network on the MNIST dataset
+comments: true
 ---
+
 ![CNN](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/CNNArchitecture.jpg "CNN")
 <br />
 
