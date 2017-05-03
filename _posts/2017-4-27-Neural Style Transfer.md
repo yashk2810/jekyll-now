@@ -205,7 +205,8 @@ Fitting the random image to get our final image.
 x = rand_img(style_shape)
 solve_image(evaluator, 10, x, resultspath)
 ```
-This is the result of the style transfer.
+This is the result of the style transfer. Looks good, doesn't it?
+<br />
 ![Transfer](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/Wave_baby.gif "Transfer")
 
 
