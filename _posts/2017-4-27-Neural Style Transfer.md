@@ -27,7 +27,7 @@ import keras.backend as K
 
 ## Recreate Content
 
-Before we do style transfer, we need to recreate the content of the image from a random image. The content image can be found <a href="https://github.com/yashk2810/yashk2810.github.io/blob/master/images/hugo.jpg">here</a>
+Before we do style transfer, we need to recreate the <a href="https://github.com/yashk2810/yashk2810.github.io/blob/master/images/hugo.jpg">content image</a> from a random image.
 
 ```python
 img = Image.open('hugo.jpg')
