@@ -168,7 +168,8 @@ Let's fit the random image to recreate our style.
 ```python
 import scipy
 
-# Here, we don't divide the random image function by 100, to provide sufficient variance so as the gradient doesn't become constant.
+# Here, we don't divide the random image function by 100, 
+# to provide sufficient variance so as the gradient doesn't become constant.
 def rand_img(shape):
     return np.random.uniform(-2.5, 2.5, shape)
 
@@ -181,8 +182,31 @@ This is how the style is recreated after each iteration.
 
 ## Style Transfer
 
-Now to the most exciting part, let's merge both the processes and create the prisma like photo.
+Now to the most exciting part, let's merge both the processes and create the prisma like photo. For this, we just need to merge the content loss and the style loss. We will also assign weights so as to decide how much content and loss we want in the combined image. You can play around with how much content or style you want. You might get more aesthetically pleasing images. 
 
+```python
+content_layer = outputs['block2_conv2']
+# The model used here is the VGG16 model 
+# initialized in the style recreation part
+content_model = Model(model.input, content_layer)
+content_target = content_model.predict(img_arr)
+
+style_weights = [0.05,0.2,0.2,0.25,0.3]
+total_loss = sum(style_loss(l[0], t[0])*w for l, t, w in zip(style_layers, style_target, style_weights))
+total_loss += metrics.mse(content_layer, content_target)/10
+
+grads = K.gradients(total_loss, model.input)
+fn = K.function([model.input], [total_loss] + grads)
+evaluator = Evaluator(fn, style_shape)
+```
+
+Fitting the random image to get our final image.
+```python
+x = rand_img(style_shape)
+solve_image(evaluator, 10, x, resultspath)
+```
+This is the result of the style transfer.
+![Transfer](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/Wave_baby.gif "Transfer")
 
 
 
