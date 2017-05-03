@@ -214,7 +214,8 @@ I highly encourage you to experiment with the changing the layers used to recrea
 
 ![Monet](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/brooklyn_monet.gif "Monet")
 
-The code for the style transfer lives <a href="https://github.com/yashk2810/Neural-Style-Transfer">here</a>.
+<br />
+**The code for the style transfer lives <a href="https://github.com/yashk2810/Neural-Style-Transfer">here</a>.**
 
 <br />
 Until next time,
