@@ -137,7 +137,19 @@ style_shape = style_arr.shape
 
 We will follow all the steps exactly as we did in the content step but with a slight change. We will use the activation of 5 layers to recreate the style. We will grab the activations from block1_conv2, block2_conv2, block3_conv3, block4_conv3, block5_conv3 by following <a href="https://arxiv.org/abs/1603.08155">Johnson et al.</a>
 
+After initializing the model, we will get the activations of all the layers.
+```python
+model = VGG16(weights='imagenet', include_top=False, input_shape=style_shape[1:])
+outputs = {layer.name:layer.output for layer in model.layers}
+temp = ['block1_conv2', 'block2_conv2', 'block3_conv3', 'block4_conv3', 'block5_conv3']
+style_layers = [outputs[i] for i in temp]
 
+# Calculating the target activations
+style_model = Model(model.input, style_layers)
+style_target = [K.variable(i) for i in style_model.predict(style_arr)]
+```
+
+Instead of using MSE like we did in recreating the content
 
 
 
