@@ -210,6 +210,16 @@ This is the result of the style transfer. The results are pretty good.
 <br />
 ![Transfer](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/Wave_baby.gif "Transfer")
 
+I highly encourage you to experiment with the changing the layers used to recreate the content and the style and the amount of content and style you want. For example, I used block4_conv2 and included 1/5th of the original content. I also changed the style weights to [0.05,0.15,0.2,0.3,0.3]. The result I got after doing this, is much more awesome according to me.
+
+![Monet](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/brooklyn_monet.gif "Monet")
+
+<br />
+Until next time,
+
+Ciao
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-text="Check out this AWESOME article" data-lang="en" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 
