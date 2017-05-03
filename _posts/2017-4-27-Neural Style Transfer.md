@@ -56,6 +56,71 @@ Let's convert the image into (batch_size, height, width, channels) so we can fee
 img_arr = pre_processing(np.expand_dims(np.array(img), 0))
 shape_content = img_arr.shape
 ```
+Let's define the VGG16 model
+```python
+model = VGG16(weights='imagenet', include_top=False)
+```
+
+Now, we will grab the activation from block2_conv2 by following <a href="https://arxiv.org/abs/1603.08155">Johnson et al.</a>
+```python
+layer = model.get_layer('block2_conv2').output
+
+# Create a model based on the layer
+layer_model = Model(model.input, layer)
+```
+
+After creating the model, we need to predict the target activations.
+```python
+target = K.variable(layer_model.predict(img_arr))
+```
+
+We will define an Evaluator class to access the loss function and gradients of a function because that is what scikit-learn's optimizers require.
+```python
+class Evaluator(object):
+    def __init__(self, f, shp): self.f, self.shp = f, shp
+        
+    def loss(self, x):
+        loss_, self.grad_values = self.f([x.reshape(self.shp)])
+        return loss_.astype(np.float64)
+
+    def grads(self, x): return self.grad_values.flatten().astype(np.float64)
+```
+
+Let's calculate the mean squared error of the layer activation and the target activation. This will be our loss function which the optimizer will optimize so that our random image looks more like the content image.
+```python
+loss = metrics.mse(layer, target)
+grads = K.gradients(loss, model.input)
+fn = K.function([model.input], [loss] + grads)
+evaluator = Evaluator(fn, shape_content)
+```
+
+L-BFGS is the optimizer that we will use, since it optimizes much faster than gradient descent. You can read about it <a href="https://www.quora.com/What-is-an-intuitive-explanation-of-BFGS-and-limited-memory-BFGS-optimization-algorithms">here</a>. We will save the image after each iteration, so we can see how the random image optimizes to the original image.
+```python
+def solve_image(eval_obj, niter, x, path):
+    for i in range(niter):
+        x, min_val, info = fmin_l_bfgs_b(eval_obj.loss, x.flatten(),
+                                         fprime=eval_obj.grads, maxfun=20)
+        x = np.clip(x, -127, 127)
+        print ('Minimum Loss Value:', min_val)
+        imsave('{}res_at_iteration_{}.png'.format(path, i), de_preprocess(x.copy(), shape_content)[0])
+    return x
+```
+
+Its time to train the random image.
+
+```python
+def rand_img(shape):
+    return np.random.uniform(-2.5, 2.5, shape) / 100
+
+x = rand_img(shape_content)
+
+x = solve_image(evaluator, 10, x, resultspath)
+```
+
+This is how the image changes per iteration to approach the content image.
+![Content](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/content.gif "Content")
+
+
 
 
 
