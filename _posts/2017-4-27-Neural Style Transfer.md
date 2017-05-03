@@ -121,7 +121,21 @@ This is how the image changes per iteration to approach the content image.
 ![Content](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/content.gif "Content")
 
 
+## Recreate Style
 
+https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/style.gif
+
+Let's initialize the <a href="https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/wave.jpg">style image</a> and do the necessary preprocessing.
+```python
+style = Image.open('starry_night.jpg')
+if style.size != img.size:
+    style = style.resize(img.size, Image.ANTIALIAS)
+
+style_arr = pre_processing(np.expand_dims(np.array(style), 0))
+style_shape = style_arr.shape
+```
+
+We will follow all the steps exactly as we did in the content step but with a slight change. We will use the activation of 5 layers to recreate the style. We will grab the activations from block1_conv2, block2_conv2, block3_conv3, block4_conv3, block5_conv3 by following <a href="https://arxiv.org/abs/1603.08155">Johnson et al.</a>
 
 
 
