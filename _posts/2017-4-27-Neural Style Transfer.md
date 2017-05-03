@@ -123,8 +123,6 @@ This is how the image changes per iteration to approach the content image.
 
 ## Recreate Style
 
-https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/style.gif
-
 Let's initialize the <a href="https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/wave.jpg">style image</a> and do the necessary preprocessing.
 ```python
 style = Image.open('starry_night.jpg')
@@ -149,7 +147,42 @@ style_model = Model(model.input, style_layers)
 style_target = [K.variable(i) for i in style_model.predict(style_arr)]
 ```
 
-Instead of using MSE like we did in recreating the content
+Instead of using mse like we did in recreating the content, we will use gram matrix(product of the matrix and its transpose) of their channels before we apply mse. Gram matrix shows how the convolutional layers correlate and completely removes all the location information. Hence, matching the gram matrix of the channels can only match some of the texture information and not the location information.
+
+```python
+def gram_matrix(x):
+    features = K.batch_flatten(K.permute_dimensions(x, (2, 0, 1)))
+    return K.dot(features, K.transpose(features)) / x.get_shape().num_elements()
+    
+def style_loss(x, targ):
+    return metrics.mse(gram_matrix(x), gram_matrix(targ))
+    
+# Calculating the loss function for all the style layers
+loss = sum(style_loss(l[0], t[0]) for l, t in zip(style_layers, style_target))
+grads = K.gradients(loss, model.input)
+fn = K.function([model.input], [loss] + grads)
+evaluator = Evaluator(fn, style_shape)
+```
+
+Let's fit the random image to recreate our style.
+```python
+import scipy
+
+# Here, we don't divide the random image function by 100, to provide sufficient variance so as the gradient doesn't become constant.
+def rand_img(shape):
+    return np.random.uniform(-2.5, 2.5, shape)
+
+x = rand_img(style_shape)
+solve_image(evaluator, 10, x, resultspath)
+```
+
+This is how the style is recreated after each iteration.
+![Style](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/style.gif "Style")
+
+## Style Transfer
+
+Now to the most exciting part, let's merge both the processes and create the prisma like photo.
+
 
 
 
