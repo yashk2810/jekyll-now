@@ -215,6 +215,8 @@ I highly encourage you to experiment with the changing the layers used to recrea
 <br />
 **The code for the style transfer lives <a href="https://github.com/yashk2810/Neural-Style-Transfer">here</a>.**
 
+If you have any questions, you can ask them in the comments and I will try my best to answer them.
+
 <br />
 Until next time,
 
