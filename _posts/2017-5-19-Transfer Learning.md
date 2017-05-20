@@ -18,5 +18,5 @@ Transfer learning was used in detecting <a href="http://news.stanford.edu/2017/0
 
 ### Why Transfer Learning?
 
-In practice, very few people train their own convolutional net from scratch.   
+In practice, very few people train their own convolutional net from scratch because they don't have sufficient data. **It is always recommended to use transfer learning in practice.**
 
