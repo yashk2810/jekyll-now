@@ -29,5 +29,6 @@ As you can see in layer 1 and layer 2 visualization, the conv net learned to rec
 
 So, if we use a model trained on imagenet for Dogs vs Cats prediction we can just change the last classifier(fully-connected) layer since the last convolutional layer already knows what a dog or a cat looks like.
 
+What if the dataset is not similar to the pretrained model data? In such cases, we can train the convnet by finetuning the weights of the pretrained model by continuing the backpropogation. You can finetune the entire convnet or keep some early layers of the network fixed(non-trainable) and finetune the higher layers. This is because the early layers contain general information about the image but the later layers become more specific to the classes in the original dataset.
 
 
