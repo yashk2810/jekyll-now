@@ -16,3 +16,7 @@ If we use these models on say, <a href="https://www.kaggle.com/c/dogs-vs-cats">D
 
 Transfer learning was used in detecting <a href="http://news.stanford.edu/2017/01/25/artificial-intelligence-used-identify-skin-cancer/">skin cancer</a>. This paper was in the Nature magazine.
 
+### Why Transfer Learning?
+
+In practice, very few people train their own convolutional net from scratch.   
+
