@@ -20,3 +20,7 @@ Transfer learning was used in detecting <a href="http://news.stanford.edu/2017/0
 
 In practice, very few people train their own convolutional net from scratch because they don't have sufficient data. **It is always recommended to use transfer learning in practice.**
 
+The below images show the things that convolutional networks learn when trained on Imagenet and why it is effective to use transfer learning.
+
+![deconvnet1](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/deconvnet1.png "deconvnet1")
+![deconvnet2](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/deconvnet2.png "deconvnet2")
