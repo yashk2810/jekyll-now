@@ -27,4 +27,6 @@ The below images show the things that convolutional networks learn when trained 
 
 As you can see in layer 1 and layer 2 visualization, the conv net learned to recognize edges, circles, etc. But the layer 4 and layer 5 learn to recognize the entire objects like dogs face, umbrella, etc. 
 
-So, if we use a model trained on imagenet for Dogs vs Cats prediction 
+So, if we use a model trained on imagenet for Dogs vs Cats prediction we can just change the last classifier(fully-connected) layer since the last convolutional layer already knows what a dog or a cat looks like.
+
+
