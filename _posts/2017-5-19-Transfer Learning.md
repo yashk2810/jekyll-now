@@ -10,4 +10,6 @@ Andrew Ng said during his widely popular NIPS 2016 tutorial that transfer learni
 
 ### What is Transfer Learning?
 
-Transfer learning is the transferring of knowledge gained from one model to another dataset with similar characteristics. For example, <a href="http://www.image-net.org/">Imagenet</a> contains images for 1000 categories. It is a competition held every year and VGG-16, Resnet50, InceptionV3, etc models have been trained on imagenet. So, when we use these models 
+Transfer learning is the transferring of knowledge gained from one model to another dataset with similar characteristics. For example, <a href="http://www.image-net.org/">Imagenet</a> contains images for 1000 categories. It is a competition held every year and VGG-16, Resnet50, InceptionV3, etc models were invented in this competition. 
+
+If we use these models on say, <a href="https://www.kaggle.com/c/dogs-vs-cats">Dogs vs Cats</a> we would we using transfer learning. Since, Imagenet already has images of dogs and cats we would just be using the features learned by the models trained on Imagenet for our purpose.
