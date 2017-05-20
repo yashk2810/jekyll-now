@@ -30,3 +30,4 @@ As you can see in layer 1 and layer 2 visualization, the conv net learned to rec
 So, if we use a model trained on imagenet for Dogs vs Cats prediction we can just change the last classifier(fully-connected) layer since the last convolutional layer already knows what a dog or a cat looks like.
 
 
+
