@@ -24,3 +24,7 @@ The below images show the things that convolutional networks learn when trained 
 
 ![deconvnet1](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/deconvnet1.png "deconvnet1")
 ![deconvnet2](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/deconvnet2.png "deconvnet2")
+
+As you can see in layer 1 and layer 2 visualization, the conv net learned to recognize edges, circles, etc. But the layer 4 and layer 5 learn to recognize the entire objects like dogs face, umbrella, etc. 
+
+So, if we use a model trained on imagenet for Dogs vs Cats prediction 
