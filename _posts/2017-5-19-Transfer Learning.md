@@ -175,7 +175,19 @@ model.fit_generator(train_generator, samples_per_epoch=train_samples, nb_epoch=1
                     validation_data=validation_generator, nb_val_samples=val_samples)
 ```
 
-The accuracy achieved by doing these simple steps is an astounding 98.30%.
+The accuracy achieved by doing these simple steps is an astounding **98.30%**.
+
+### Next steps
+
+You can use this technique on other datasets as well. The convolutional layers calculates all the features and the Dense(Fully connected) layers are used to classify the image based on the features. So, you can use a model which comprises of all the convolutional layers. Then use that model to predict the features based on our data. Next, create your own model and use the predicted features as the training data on this new model.
+
+This new model can contain more convolutional layers or only dense layers or a combination of both or anything else. It's entirely upto you. You can try doing transfer learning on the <a href="https://www.kaggle.com/c/state-farm-distracted-driver-detection">Statefarm</a> competition or the <a href="https://www.kaggle.com/c/the-nature-conservancy-fisheries-monitoring">Fisheries</a> competition hosted on <a href="https://www.kaggle.com/">Kaggle</a>.
+
+The <a href="course.fast.ai">Deep learning</a> course offered by Jeremy Howard and Rachel Thomas is fantastic. I highly recommend you to complete this course.
+
+Until next time,
+
+Ciao.
 
 
 
