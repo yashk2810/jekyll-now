@@ -74,4 +74,65 @@ def vgg_preprocess(x):
     return x[:, ::-1, :, :]
 ```
 
+Let's define the VGG16 model.
+
+```python
+# VGG16 was trained on 224*224 images. So we also need to use 224*224 images.
+image_width = 224
+image_height = 224
+val_samples = 2000
+train_samples = 23000
+
+model = Sequential()
+
+model.add(Lambda(vgg_preprocess, input_shape=(3, image_width, image_height), 
+                 output_shape=(3, image_width, image_height)))
+
+model.add(ZeroPadding2D((1, 1)))
+model.add(Convolution2D(64, 3, 3, activation='relu', name='conv1_1'))
+model.add(ZeroPadding2D((1, 1)))
+model.add(Convolution2D(64, 3, 3, activation='relu', name='conv1_2'))
+model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+
+model.add(ZeroPadding2D((1, 1)))
+model.add(Convolution2D(128, 3, 3, activation='relu', name='conv2_1'))
+model.add(ZeroPadding2D((1, 1)))
+model.add(Convolution2D(128, 3, 3, activation='relu', name='conv2_2'))
+model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+
+model.add(ZeroPadding2D((1, 1)))
+model.add(Convolution2D(256, 3, 3, activation='relu', name='conv3_1'))
+model.add(ZeroPadding2D((1, 1)))
+model.add(Convolution2D(256, 3, 3, activation='relu', name='conv3_2'))
+model.add(ZeroPadding2D((1, 1)))
+model.add(Convolution2D(256, 3, 3, activation='relu', name='conv3_3'))
+model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+
+model.add(ZeroPadding2D((1, 1)))
+model.add(Convolution2D(512, 3, 3, activation='relu', name='conv4_1'))
+model.add(ZeroPadding2D((1, 1)))
+model.add(Convolution2D(512, 3, 3, activation='relu', name='conv4_2'))
+model.add(ZeroPadding2D((1, 1)))
+model.add(Convolution2D(512, 3, 3, activation='relu', name='conv4_3'))
+model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+
+model.add(ZeroPadding2D((1, 1)))
+model.add(Convolution2D(512, 3, 3, activation='relu', name='conv5_1'))
+model.add(ZeroPadding2D((1, 1)))
+model.add(Convolution2D(512, 3, 3, activation='relu', name='conv5_2'))
+model.add(ZeroPadding2D((1, 1)))
+model.add(Convolution2D(512, 3, 3, activation='relu', name='conv5_3'))
+model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+
+model.add(Flatten())
+model.add(Dense(4096, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(4096, activation='relu'))
+model.add(Dropout(0.5))
+
+model.add(Dense(1000, activation='softmax'))
+
+model.load_weights('vgg16_th.h5')
+```
+
 
