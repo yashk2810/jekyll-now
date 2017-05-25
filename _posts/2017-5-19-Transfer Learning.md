@@ -43,4 +43,35 @@ VGG16 is a sequential model with a very simple architecture. This makes transfer
 
 ![vgg16_architecture](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/vgg-16-architecture.png "vgg16_architecture")
 
+### Code
+
+Let's import the necessary libraries. 
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+%matplotlib inline
+from keras.datasets import mnist
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Activation, Flatten
+from keras.layers.core import Lambda
+from keras.optimizers import Adam
+from keras.layers.normalization import BatchNormalization
+from keras.utils import np_utils
+from keras.layers import Convolution2D, MaxPooling2D, ZeroPadding2D
+from keras.preprocessing.image import ImageDataGenerator
+```
+
+Now we need to preprocess the input as the VGG16 authors did in their implementation(mentioned in the paper).
+
+```python
+# Subtracting the mean calculated by the VGG16 authors and reversing the channels from RGB to BGR.
+def vgg_preprocess(x):
+    x[:, 0, :, :] = x - 103.939
+    x[:, 1, :, :] = x - 116.779
+    x[:, 2, :, :] = x - 123.68
+    return x[:, ::-1, :, :]
+```
+
 
