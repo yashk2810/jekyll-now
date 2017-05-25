@@ -31,5 +31,16 @@ So, if we use a model trained on imagenet for Dogs vs Cats prediction we can jus
 
 What if the dataset is not similar to the pretrained model data? In such cases, we can train the convnet by finetuning the weights of the pretrained model by continuing the backpropogation. You can finetune the entire convnet or keep some early layers of the network fixed(non-trainable) and finetune the higher layers. This is because the early layers contain general information about the image but the later layers become more specific to the classes in the original dataset.
 
+Alright, let's code!
+
+We will do transfer learning on the Dogs vs Cats competition using VGG-16 model trained on Imagenet. The library used for this is Keras with Theano backend. You can convert it to Tensorflow backend if you want to. 
+
+VGG16 with Theano weights :- <a href="https://drive.google.com/file/d/0Bz7KyqmuGsilT0J5dmRCM0ROVHc/view">
+
+VGG16 with Tensorflow weights :- <a href="https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels.h5">
+
+VGG16 is a sequential model with a very simple architecture. This makes transfer learning using VGG16 very easy.
+
+![vgg16_architecture](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/vgg-16-architecture.png "vgg16_architecture")
 
 
