@@ -183,7 +183,7 @@ You can use this technique on other datasets as well. The convolutional layers c
 
 This new model can contain more convolutional layers or only dense layers or a combination of both or anything else. It's entirely upto you. You can try doing transfer learning on the <a href="https://www.kaggle.com/c/state-farm-distracted-driver-detection">Statefarm</a> competition or the <a href="https://www.kaggle.com/c/the-nature-conservancy-fisheries-monitoring">Fisheries</a> competition hosted on <a href="https://www.kaggle.com/">Kaggle</a>.
 
-The <a href="course.fast.ai">Deep learning</a> course offered by Jeremy Howard and Rachel Thomas is fantastic. I highly recommend you to complete this course.
+The <a href="http://course.fast.ai/index.html">Deep learning</a> course offered by Jeremy Howard and Rachel Thomas is fantastic. I highly recommend you to complete this course.
 
 <br />
 Until next time,
