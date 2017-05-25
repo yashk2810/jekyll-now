@@ -35,9 +35,9 @@ Alright, let's code!
 
 We will do transfer learning on the Dogs vs Cats competition using VGG-16 model trained on Imagenet. The library used for this is Keras with Theano backend. You can convert it to Tensorflow backend if you want to. 
 
-VGG16 with Theano weights :- <a href="https://drive.google.com/file/d/0Bz7KyqmuGsilT0J5dmRCM0ROVHc/view"></a>
+VGG16 with Theano weights :- <a href="https://drive.google.com/file/d/0Bz7KyqmuGsilT0J5dmRCM0ROVHc/view">https://drive.google.com/file/d/0Bz7KyqmuGsilT0J5dmRCM0ROVHc/view</a>
 
-VGG16 with Tensorflow weights :- <a href="https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels.h5"></a>
+VGG16 with Tensorflow weights :- <a href="https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels.h5">https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels.h5</a>
 
 VGG16 is a sequential model with a very simple architecture. This makes transfer learning using VGG16 very easy.
 
