@@ -155,6 +155,28 @@ model.add(Dense(1000, activation='softmax'))
 model.load_weights('vgg16_th.h5')
 ```
 
+Transfer learning begins! Since we just have to predict 2 classes, this becomes a binary classification problem. So, we will pop the last dense layer which defines 1000 filters(since there are 1000 categories in Imagenet) and replace it with 1 filter. Moreover, we have to set all the layers as non-trainable. If they are set as trainable, then all the convolutional layers will be trained from scratch and transfer learning will be moot.
+```python
+model.pop()
+
+for layer in model.layers:
+    layer.trainable = False
+
+model.add(Dense(1, activation='sigmoid'))
+```
+
+Set the loss, the optimizer and start training.
+
+```python
+model.compile(loss='binary_crossentropy', optimizer=Adam(lr=0.001), metrics=['accuracy'])
+
+# ORIGINAL METHOD
+model.fit_generator(train_generator, samples_per_epoch=train_samples, nb_epoch=1, 
+                    validation_data=validation_generator, nb_val_samples=val_samples)
+```
+
+The accuracy achieved by doing these simple steps is an astounding 98.30%.
+
 
 
 
