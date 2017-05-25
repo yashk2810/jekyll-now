@@ -74,6 +74,26 @@ def vgg_preprocess(x):
     return x[:, ::-1, :, :]
 ```
 
+Now, we will prepare our data.
+
+```python
+gen = ImageDataGenerator()
+
+train_generator = gen.flow_from_directory('data/dogscats/train', 
+                                               target_size=(image_width, image_height),
+                                               class_mode='binary',
+                                               batch_size=64)
+
+validation_generator = gen.flow_from_directory('data/dogscats/valid', 
+                                               target_size=(image_width, image_height),
+                                               class_mode='binary',
+                                               batch_size=64)
+
+# Converting the labels to one-hot encoded matrix
+train_labels = np_utils.to_categorical(train_generator.classes)
+validation_labels = np_utils.to_categorical(validation_generator.classes)                                           
+```
+
 Let's define the VGG16 model.
 
 ```python
@@ -135,25 +155,6 @@ model.add(Dense(1000, activation='softmax'))
 model.load_weights('vgg16_th.h5')
 ```
 
-Now, we will prepare our data.
-
-```python
-gen = ImageDataGenerator()
-
-train_generator = gen.flow_from_directory('data/dogscats/train', 
-                                               target_size=(image_width, image_height),
-                                               class_mode='binary',
-                                               batch_size=64)
-
-validation_generator = gen.flow_from_directory('data/dogscats/valid', 
-                                               target_size=(image_width, image_height),
-                                               class_mode='binary',
-                                               batch_size=64)
-
-# Converting the labels to one-hot encoded matrix
-train_labels = np_utils.to_categorical(train_generator.classes)
-validation_labels = np_utils.to_categorical(validation_generator.classes)                                           
-```
 
 
 
