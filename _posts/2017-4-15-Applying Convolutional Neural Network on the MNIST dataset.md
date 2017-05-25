@@ -204,7 +204,9 @@ This is an awesome neural network 3D simulation video based on the MNIST dataset
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3JQ3hYko51Y?ecver=1" frameborder="0" allowfullscreen></iframe>
 
 <br />
-Ciao   
+Until next time,
+
+Ciao  
 
 <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-text="Check out this AWESOME article" data-lang="en" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
