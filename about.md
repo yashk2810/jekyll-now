@@ -16,4 +16,4 @@ Deep learning is changing the industry and applying it in every aspect of our li
 
 ### Contact me
 
-[yash.katariya10@gmail.com](mailto:yash.katariya10@gmail.com)
+yash.katariya10 AT gmail DOT com
