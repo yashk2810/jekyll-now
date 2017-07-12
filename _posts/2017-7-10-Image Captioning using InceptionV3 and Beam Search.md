@@ -8,5 +8,9 @@ In lesson 8 of Practical Deep Learning For Coders, Part 2 by Jeremy Howard and R
 So, I asked Jeremy whether Image Captioning was implemented in this part of the course and he suggested that it would be a good class project. Hence, I decided that image captioning would be my project.
 
 If you directly want to jump to the code, you can find it <a href="https://github.com/yashk2810/Image-Captioning">here</a>.
-The entire code is in the jupyter notebook, so that should hopefully make it easier to understand. I will explain some parts of the code in this blog post.
+The entire code is in the jupyter notebook, so that should hopefully make it easier to understand. I will follow a code first approach and will explain some parts of the code in this post.
+
+## Feature Extraction
+
+
 
