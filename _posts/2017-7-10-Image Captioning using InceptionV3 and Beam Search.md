@@ -62,7 +62,7 @@ After extracting the features, we need to calculate the vocabulary size. So we g
 
 While passing the data to the model, we need to pass the image encoding and the first word as the input and the output will be the second word. Next input will be the image encoding, first word and the second word and the output will the third word. This will go on for the entire caption and then the second image encoding will come and its captions and so on.
 
-We will add to more words *<start>* and *<end>* to identify the starting and ending of a sentence. This will be useful when we have to decrypt the predictions.
+We will add 2 more words *<start>* and *<end>* to identify the starting and ending of a sentence. This will be useful when we have to decrypt the predictions.
 
 **NOTE:- The captions that are fed to the model are not words but indices of those words stored in our vocabulary. In the code, I have create 2 dictionaries; word2idx(word to index) and idx2word(index to word).**
 
@@ -71,17 +71,17 @@ We will add to more words *<start>* and *<end>* to identify the starting and end
 Let's take an example, 
       Let the image encoding be *IE* and the caption for *IE* is "<start> A dog is running in the grass . <end>"
 
-| Input  | Output |
-| ------------- | ------------- |
-| [[IE], ["<start>"]]  | ["A"]  |
-| [[IE], ["<start>", "A"]]  | ["dog"]  |
-| [[IE], ["<start>", "A", "dog"]]  | ["is"]  |
-| [[IE], ["<start>", "A", "dog", "is"]]  | ["running"]  |
-| [[IE], ["<start>", "A", "dog", "is", "running"]]  | ["in"]  |
-| [[IE], ["<start>", "A", "dog", "is", "running", "in"]]  | ["the"]  |
-| [[IE], ["<start>", "A", "dog", "is", "running", "in", "the"]]  | ["grass"]  |
-| [[IE], ["<start>", "A", "dog", "is", "running", "in", "the", "grass"]]  | ["."]  |
-| [[IE], ["<start>", "A", "dog", "is", "running", "in", "the", "grass", "."]]  | ["<end>"]  |
+Input  | Output 
+--- | ---
+[[IE], ["<start>"]]  | ["A"]  
+[[IE], ["<start>", "A"]]  | ["dog"] 
+[[IE], ["<start>", "A", "dog"]]  | ["is"] 
+[[IE], ["<start>", "A", "dog", "is"]]  | ["running"] 
+[[IE], ["<start>", "A", "dog", "is", "running"]]  | ["in"] 
+[[IE], ["<start>", "A", "dog", "is", "running", "in"]]  | ["the"] 
+[[IE], ["<start>", "A", "dog", "is", "running", "in", "the"]]  | ["grass"] 
+[[IE], ["<start>", "A", "dog", "is", "running", "in", "the", "grass"]]  | ["."] 
+[[IE], ["<start>", "A", "dog", "is", "running", "in", "the", "grass", "."]]  | ["<end>"] 
 
 
 
