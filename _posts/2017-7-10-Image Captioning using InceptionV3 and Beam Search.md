@@ -238,7 +238,7 @@ Finally, here are some results that I got. The rest of the results are in the ju
 ![three](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/3%20images.jpeg "three")
 ![last](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/last.jpeg "last")
 
-
+<br />
 Until next time,
 
 Ciao
