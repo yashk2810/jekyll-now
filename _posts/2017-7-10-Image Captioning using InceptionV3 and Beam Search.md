@@ -26,31 +26,7 @@ In Image Captioning, a CNN is used to extract the features from an image which i
 
 Since InceptionV3 has less parameters and a greater accuracy, I decided to use InceptionV3 to extract features from an image.
 
-```python
-# This is how the preprocessing was done
-# by the Inception authors
-def preprocess_input(x):
-    x /= 255.
-    x -= 0.5
-    x *= 2.
-    return x
- 
-# The image size used was 299 X 299.
-def preprocess(image_path):
-    img = image.load_img(image_path, target_size=(299, 299))
-    x = image.img_to_array(img)
-    x = np.expand_dims(x, axis=0)
-
-    x = preprocess_input(x)
-    return x
-
-model = InceptionV3(weights='imagenet')
-
-new_input = model.input
-hidden_layer = model.layers[-2].output
-
-model_new = Model(new_input, hidden_layer)
-```
+<script src="https://gist.github.com/yashk2810/47cd94f27003e8926dde98d24058b781.js"></script>
 
 If an image is fed into "model_new", we will get a numpy array of shape **(1, 2048)**. InceptionV3 doesn't have any fully connected layers, instead it has Average pooling layer which is the reason of less parameters. VGG16's first fully connected layer contributes 102 million parameters out of the 134 million parameters.
 
@@ -85,32 +61,7 @@ Because of such input we will need to design our own generator and give the inpu
 
 * For the decoder, I am merging the image model and the caption model which is then put through a Birectional LSTM and Dense layer with 8256 hidden neurons and softmax activation.
 
-```python
-embedding_size = 300
-
-image_model = Sequential([
-        Dense(embedding_size, input_shape=(2048,), activation='relu'),
-        RepeatVector(max_len)
-    ])
-    
-caption_model = Sequential([
-        Embedding(vocab_size, embedding_size, input_length=max_len),
-        LSTM(256, return_sequences=True),
-        TimeDistributed(Dense(300))
-    ])
-    
-final_model = Sequential([
-        Merge([image_model, caption_model], mode='concat', concat_axis=1),
-        Bidirectional(LSTM(256, return_sequences=False)),
-        Dense(vocab_size),
-        Activation('softmax')
-    ])
-    
-final_model.compile(loss='categorical_crossentropy', optimizer=RMSprop(), metrics=['accuracy'])
-
-final_model.fit_generator(data_generator(batch_size=128), samples_per_epoch=samples_per_epoch, nb_epoch=1, 
-                          verbose=2)
-```
+<script src="https://gist.github.com/yashk2810/272649b477fb9c26b39bb1d16c4a7e8f.js"></script>
 
 **After training it for approximately 35 epochs, the loss value drops down to 2.8876**.
 
@@ -119,70 +70,11 @@ final_model.fit_generator(data_generator(batch_size=128), samples_per_epoch=samp
 I have used 2 methods for predicting the captions.
 * **Max Search** is where the maximum value index(argmax) in the 8256 long predicted vector is extracted and appended to the result. This is done until we hit `<end>` or the maximum length of the caption.
 
-```python
-def predict_captions(image):
-    start_word = ["<start>"]
-    while True:
-        par_caps = [word2idx[i] for i in start_word]
-        par_caps = sequence.pad_sequences([par_caps], maxlen=max_len, padding='post')
-        e = encoding_test[image[len(images):]]
-        preds = final_model.predict([np.array([e]), np.array(par_caps)])
-        word_pred = idx2word[np.argmax(preds[0])]
-        start_word.append(word_pred)
-        
-        if word_pred == "<end>" or len(start_word) > max_len:
-            break
-            
-    return ' '.join(start_word[1:-1])
-```
+<script src="https://gist.github.com/yashk2810/5d7cdeca9d5bbf9d4e2b80d7a0d3d256.js"></script>
 
 * **Beam Search** is where we take top **k** predictions, feed them again in the model and then sort them using the probabilities returned by the model. So, the list will always contain the top **k** predictions. In the end, we take the one with the highest probability and go through it till we encounter `<end>` or reach the maximum caption length. 
 
-```python
-def beam_search_predictions(image, beam_index = 3):
-    start = [word2idx["<start>"]]
-    
-    # start_word[0][0] = index of the starting word
-    # start_word[0][1] = probability of the word predicted
-    start_word = [[start, 0.0]]
-    
-    while len(start_word[0][0]) < max_len:
-        temp = []
-        for s in start_word:
-            par_caps = sequence.pad_sequences([s[0]], maxlen=max_len, padding='post')
-            e = encoding_test[image[len(images):]]
-            preds = final_model.predict([np.array([e]), np.array(par_caps)])
-            
-            # Getting the top <beam_index>(n) predictions
-            word_preds = np.argsort(preds[0])[-beam_index:]
-            
-            # creating a new list so as to put them via the model again
-            for w in word_preds:
-                next_cap, prob = s[0][:], s[1]
-                next_cap.append(w)
-                prob += preds[0][w]
-                temp.append([next_cap, prob])
-                    
-        start_word = temp
-        # Sorting according to the probabilities
-        start_word = sorted(start_word, reverse=False, key=lambda l: l[1])
-        # Getting the top words
-        start_word = start_word[-beam_index:]
-    
-    start_word = start_word[-1][0]
-    intermediate_caption = [idx2word[i] for i in start_word]
-
-    final_caption = []
-    
-    for i in intermediate_caption:
-        if i != '<end>':
-            final_caption.append(i)
-        else:
-            break
-    
-    final_caption = ' '.join(final_caption[1:])
-    return final_caption
-```
+<script src="https://gist.github.com/yashk2810/f14671f6ad2453d6b7fe029095bfeb84.js"></script>
 
 Beam search with k=3 *usually* perform the best.
 
