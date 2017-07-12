@@ -84,13 +84,12 @@ Finally, here are some results that I got. The rest of the results are in the ju
 ![three](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/3%20images.jpeg "three")
 ![last](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/last.jpeg "last")
 
-<br />
-<br />
 
 ## Next Steps
 
 Attention has been proven to be very effective in a plethora of tasks including image captioning. Implementing attention in my model will definitely lead to an improvement. If anyone of you are interested in this you can send a pull request. 
 
+<br />
 Until next time,
 
 Ciao
