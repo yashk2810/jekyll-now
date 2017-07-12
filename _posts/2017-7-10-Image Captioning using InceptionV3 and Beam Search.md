@@ -69,19 +69,19 @@ We will add 2 more words *`<start>`* and *`<end>`* to identify the starting and 
 **So, in the example below, the input won't be *dog* instead it will be *word2idx[dog]*. **
 
 Let's take an example, 
-      Let the image encoding be *IE* and the caption for *IE* is "<start> A dog is running in the grass . <end>"
+      Let the image encoding be *IE* and the caption for *IE* is "`<start>` A dog is running in the grass . `<end>`"
 
 Input  | Output 
 --- | ---
-[[IE], ["<start>"]]  | ["A"]  
-[[IE], ["<start>", "A"]]  | ["dog"] 
-[[IE], ["<start>", "A", "dog"]]  | ["is"] 
-[[IE], ["<start>", "A", "dog", "is"]]  | ["running"] 
-[[IE], ["<start>", "A", "dog", "is", "running"]]  | ["in"] 
-[[IE], ["<start>", "A", "dog", "is", "running", "in"]]  | ["the"] 
-[[IE], ["<start>", "A", "dog", "is", "running", "in", "the"]]  | ["grass"] 
-[[IE], ["<start>", "A", "dog", "is", "running", "in", "the", "grass"]]  | ["."] 
-[[IE], ["<start>", "A", "dog", "is", "running", "in", "the", "grass", "."]]  | ["<end>"] 
+[[IE], ["`<start>`"]]  | ["A"]  
+[[IE], ["`<start>`", "A"]]  | ["dog"] 
+[[IE], ["`<start>`", "A", "dog"]]  | ["is"] 
+[[IE], ["`<start>`", "A", "dog", "is"]]  | ["running"] 
+[[IE], ["`<start>`", "A", "dog", "is", "running"]]  | ["in"] 
+[[IE], ["`<start>`", "A", "dog", "is", "running", "in"]]  | ["the"] 
+[[IE], ["`<start>`", "A", "dog", "is", "running", "in", "the"]]  | ["grass"] 
+[[IE], ["`<start>`", "A", "dog", "is", "running", "in", "the", "grass"]]  | ["."] 
+[[IE], ["`<start>`", "A", "dog", "is", "running", "in", "the", "grass", "."]]  | ["`<end>`"] 
 
 
 
