@@ -27,8 +27,36 @@ In Image Captioning, a CNN is used to extract the features from an image which i
 Since InceptionV3 has less parameters and a greater accuracy, I decided to use InceptionV3 to extract features from an image.
 
 ```python
+# This is how the preprocessing was done
+# by the Inception authors
+def preprocess_input(x):
+    x /= 255.
+    x -= 0.5
+    x *= 2.
+    return x
+ 
+# The image size used was 299 X 299.
+def preprocess(image_path):
+    img = image.load_img(image_path, target_size=(299, 299))
+    x = image.img_to_array(img)
+    x = np.expand_dims(x, axis=0)
 
+    x = preprocess_input(x)
+    return x
+
+model = InceptionV3(weights='imagenet')
+
+new_input = model.input
+hidden_layer = model.layers[-2].output
+
+model_new = Model(new_input, hidden_layer)
 ```
+
+If an image is fed into "model_new", we will get a numpy array of shape **(1, 2048)**. InceptionV3 doesn't have any fully connected layers, instead it has Average pooling layer which is the reason of less parameters. VGG16's first fully connected layer contributes 102 million parameters out of the 134 million parameters.
+
+Now, we can use *model_new* to extract the features from all our training images.
+
+## Data Generator
 
 
 
