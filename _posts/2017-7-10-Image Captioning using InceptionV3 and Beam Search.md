@@ -126,5 +126,47 @@ def data_generator(batch_size = 32):
                         count = 0
 ```
 
+## Model
+* For image model, I am using a dense layer with input dimension = 2048 which is repeated. 
+
+* For the caption model, I am using a 300 dimensional embedding followed by a LSTM layer with return sequences set to True which is followed by a TimeDistributed Dense layer. 
+
+* For the decoder, I am merging the image model and the caption model which is then put through a Birectional LSTM and Dense layer with 8256 hidden neurons and softmax activation.
+
+```python
+embedding_size = 300
+
+image_model = Sequential([
+        Dense(embedding_size, input_shape=(2048,), activation='relu'),
+        RepeatVector(max_len)
+    ])
+    
+caption_model = Sequential([
+        Embedding(vocab_size, embedding_size, input_length=max_len),
+        LSTM(256, return_sequences=True),
+        TimeDistributed(Dense(300))
+    ])
+    
+final_model = Sequential([
+        Merge([image_model, caption_model], mode='concat', concat_axis=1),
+        Bidirectional(LSTM(256, return_sequences=False)),
+        Dense(vocab_size),
+        Activation('softmax')
+    ])
+    
+final_model.compile(loss='categorical_crossentropy', optimizer=RMSprop(), metrics=['accuracy'])
+
+final_model.fit_generator(data_generator(batch_size=128), samples_per_epoch=samples_per_epoch, nb_epoch=1, 
+                          verbose=2)
+```
+
+**After training it for approximately 35 epochs, the loss value drops down to 2.8876**.
+
+## Predictions
+
+I have used 2 methods for predicting the captions.
+* Max Search
+* Beam Search
+
 
 
