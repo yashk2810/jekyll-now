@@ -184,12 +184,14 @@ def predict_captions(image):
     return ' '.join(start_word[1:-1])
 ```
 
-* **Beam Search** is where we take **k** top predictions, feed them again in the model and then sort them using the probabilities returned by the model. 
+* **Beam Search** is where we take top **k** predictions, feed them again in the model and then sort them using the probabilities returned by the model. So, the list will always contain the top **k** predictions. In the end, we take the one with the highest probability and go through it till we encounter `<end>` or reach the maximum caption length. 
 
 ```python
 def beam_search_predictions(image, beam_index = 3):
     start = [word2idx["<start>"]]
     
+    # start_word[0][0] = index of the starting word
+    # start_word[0][1] = probability of the word predicted
     start_word = [[start, 0.0]]
     
     while len(start_word[0][0]) < max_len:
@@ -199,10 +201,10 @@ def beam_search_predictions(image, beam_index = 3):
             e = encoding_test[image[len(images):]]
             preds = final_model.predict([np.array([e]), np.array(par_caps)])
             
+            # Getting the top <beam_index>(n) predictions
             word_preds = np.argsort(preds[0])[-beam_index:]
             
-            # Getting the top <beam_index>(n) predictions and creating a 
-            # new list so as to put them via the model again
+            # creating a new list so as to put them via the model again
             for w in word_preds:
                 next_cap, prob = s[0][:], s[1]
                 next_cap.append(w)
