@@ -68,8 +68,7 @@ We will add 2 more words *`<start>`* and *`<end>`* to identify the starting and 
 
 So, in the example below, the input won't be **"dog"** instead it will be **word2idx["dog"].**
 
-For example, Let the image encoding be *IE* and the caption for *IE* is 
-<center>"`<start>` A dog is running in the grass . `<end>`"</center>
+For example, Let the image encoding be *IE* and the caption for *IE* is **`<start>` A dog is running in the grass . `<end>`**
 
 <br />
 ![table](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/table.jpg "table")
