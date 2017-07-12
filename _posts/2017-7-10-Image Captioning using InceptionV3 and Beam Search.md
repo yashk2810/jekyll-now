@@ -26,6 +26,9 @@ In Image Captioning, a CNN is used to extract the features from an image which i
 
 Since InceptionV3 has less parameters and a greater accuracy, I decided to use InceptionV3 to extract features from an image.
 
+```python
+
+```
 
 
 
