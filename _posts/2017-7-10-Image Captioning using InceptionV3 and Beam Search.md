@@ -86,6 +86,11 @@ Finally, here are some results that I got. The rest of the results are in the ju
 
 <br />
 <br />
+
+## Next Steps
+
+Attention has been proven to be very effective in a plethora of tasks including image captioning. Implementing attention in my model will definitely lead to an improvement. If anyone of you are interested in this you can send a pull request. 
+
 Until next time,
 
 Ciao
