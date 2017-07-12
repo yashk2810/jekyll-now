@@ -237,3 +237,10 @@ Finally, here are some results that I got. The rest of the results are in the ju
 ![two](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/first%202%20images.jpeg "two")
 ![three](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/3%20images.jpeg "three")
 ![last](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/last.jpeg "last")
+
+
+Until next time,
+
+Ciao
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-text="Check out this AWESOME article" data-lang="en" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
