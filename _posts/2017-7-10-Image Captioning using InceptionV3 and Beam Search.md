@@ -165,8 +165,75 @@ final_model.fit_generator(data_generator(batch_size=128), samples_per_epoch=samp
 ## Predictions
 
 I have used 2 methods for predicting the captions.
-* Max Search
-* Beam Search
+* **Max Search** is where the maximum value index(argmax) in the 8256 long predicted vector is extracted and appended to the result. This is done until we hit `<end>` or the maximum length of the caption.
 
+```python
+def predict_captions(image):
+    start_word = ["<start>"]
+    while True:
+        par_caps = [word2idx[i] for i in start_word]
+        par_caps = sequence.pad_sequences([par_caps], maxlen=max_len, padding='post')
+        e = encoding_test[image[len(images):]]
+        preds = final_model.predict([np.array([e]), np.array(par_caps)])
+        word_pred = idx2word[np.argmax(preds[0])]
+        start_word.append(word_pred)
+        
+        if word_pred == "<end>" or len(start_word) > max_len:
+            break
+            
+    return ' '.join(start_word[1:-1])
+```
 
+* **Beam Search** is where we take **k** top predictions, feed them again in the model and then sort them using the probabilities returned by the model. 
 
+```python
+def beam_search_predictions(image, beam_index = 3):
+    start = [word2idx["<start>"]]
+    
+    start_word = [[start, 0.0]]
+    
+    while len(start_word[0][0]) < max_len:
+        temp = []
+        for s in start_word:
+            par_caps = sequence.pad_sequences([s[0]], maxlen=max_len, padding='post')
+            e = encoding_test[image[len(images):]]
+            preds = final_model.predict([np.array([e]), np.array(par_caps)])
+            
+            word_preds = np.argsort(preds[0])[-beam_index:]
+            
+            # Getting the top <beam_index>(n) predictions and creating a 
+            # new list so as to put them via the model again
+            for w in word_preds:
+                next_cap, prob = s[0][:], s[1]
+                next_cap.append(w)
+                prob += preds[0][w]
+                temp.append([next_cap, prob])
+                    
+        start_word = temp
+        # Sorting according to the probabilities
+        start_word = sorted(start_word, reverse=False, key=lambda l: l[1])
+        # Getting the top words
+        start_word = start_word[-beam_index:]
+    
+    start_word = start_word[-1][0]
+    intermediate_caption = [idx2word[i] for i in start_word]
+
+    final_caption = []
+    
+    for i in intermediate_caption:
+        if i != '<end>':
+            final_caption.append(i)
+        else:
+            break
+    
+    final_caption = ' '.join(final_caption[1:])
+    return final_caption
+```
+
+Beam search with k=3 *usually* perform the best.
+
+Finally, here are some results that I got. The rest of the results are in the jupyter notebook and you can generate your own by writing some code at the end.
+
+![two](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/first%202%20images.jpeg "two")
+![three](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/3%20images.jpeg "three")
+![last](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/last.jpeg "last")
