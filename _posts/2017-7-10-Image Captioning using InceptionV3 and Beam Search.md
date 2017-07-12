@@ -64,11 +64,11 @@ While passing the data to the model, we need to pass the image encoding and the 
 
 We will add 2 more words *`<start>`* and *`<end>`* to identify the starting and ending of a sentence. This will be useful when we have to decrypt the predictions.
 
-**NOTE:- The captions that are fed to the model are not words but indices of those words stored in our vocabulary. In the code, I have create 2 dictionaries; word2idx(word to index) and idx2word(index to word).**
+**NOTE:- The captions that are fed to the model are not words but indices of those words stored in our vocabulary. In the code, I have created 2 dictionaries; word2idx(word to index) and idx2word(index to word).**
 
 So, in the example below, the input won't be **"dog"** instead it will be **word2idx["dog"].**
 
-Let's take an example, 
+Let's take an example, <br />  
       Let the image encoding be *IE* and the caption for *IE* is "`<start>` A dog is running in the grass . `<end>`"
 
 ![table](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/table.jpg "table")
