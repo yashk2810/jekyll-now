@@ -1,7 +1,6 @@
 ---
 ---
-@import "{{ site.theme }}";
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
 //
 // IMPORTS
 //
@@ -20,7 +19,7 @@ html {
 
 body {
 	background: $white;
-  font: 18px/1.4 $helvetica;
+  font: 18px/1.4 $open-sans;
   color: $darkGray;
 }
 
