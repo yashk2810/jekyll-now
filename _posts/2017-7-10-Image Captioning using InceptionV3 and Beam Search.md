@@ -22,48 +22,19 @@ I have written the code for MS-COCO but haven't run the model because I am a stu
 
 This image is taken from the slides of CS231n Winter 2016 Lesson 10 Recurrent Neural Networks, Image Captioning and LSTM taught by Andrej Karpathy.
 
-In Image Captioning, a CNN is used to extract the features from an image which is then along with the captions is fed into an RNN. To extract the features, we use a model trained on Imagenet. I tried out VGG16, Resnet-50 and InceptionV3. Vgg16 has almost 134 million parameters and its top-5 error on Imagenet is 7.3%. InceptionV3 has 21 million parameters and its top-5 error on Imagenet is 3.46%. Human top-5 error on Imagenet is 5.1%. 
+In Image Captioning, a CNN is used to extract the features from an image which is then along with the captions is fed into an RNN. To extract the features, we use a model trained on Imagenet. I tried out VGG-16, Resnet-50 and InceptionV3. Vgg16 has almost 134 million parameters and its top-5 error on Imagenet is 7.3%. InceptionV3 has 21 million parameters and its top-5 error on Imagenet is 3.46%. Human top-5 error on Imagenet is 5.1%. 
 
-Since InceptionV3 has less parameters and a greater accuracy, I decided to use InceptionV3 to extract features from an image.
+* I used VGG-16 as my first model for extracting the features. I took *an hour* to extract features from 6000 training images. This is very slow. Imagine how much time it will take to extract features in the MS-COCO dataset which has 80,000 training images.
 
-<script src="https://gist.github.com/yashk2810/47cd94f27003e8926dde98d24058b781.js"></script>
+* Resnet-50 was the second model I tried for extracting features. But I didn't train the model for long time because InceptionV3 has a better accuracy than Resnet-50.
 
-If an image is fed into "model_new", we will get a numpy array of shape **(1, 2048)**. InceptionV3 doesn't have any fully connected layers, instead it has Average pooling layer which is the reason of less parameters. VGG16's first fully connected layer contributes 102 million parameters out of the 134 million parameters.
+* Finally, it was the time of InceptionV3. Since it has very less parameters as compared to VGG-16, it took 20 mins for InceptionV3 to extract features from 6000 images. I also ran this on MS-COCO dataset which contains 80,000 training examples and it took 2 hours and 45 minutes to extract the features.
 
-Now, we can use *model_new* to extract the features from all our training images.
+## Training and Hyperparameters
 
-## Data Generator
+For creating the model, the captions has to be put in an embedding. I wanted to try Word2Vec to get the pre-trained embedding weights of my vocabulary, but it didn't pan out. So, I took some ideas from it by setting the embedding size to 300.
 
-After extracting the features, we need to calculate the vocabulary size. So we get all the unique words from the training captions and create vocabulary. The vocabulary size is **8256**. The code for it is trivial. You can refer the notebook for that.
 
-While passing the data to the model, we need to pass the image encoding and the first word as the input and the output will be the second word. Next input will be the image encoding, first word and the second word and the output will the third word. This will go on for the entire caption and then the second image encoding will come and its captions and so on.
-
-We will add 2 more words *`<start>`* and *`<end>`* to identify the starting and ending of a sentence. This will be useful when we have to decrypt the predictions.
-
-**NOTE:- The captions that are fed to the model are not words but indices of those words stored in our vocabulary. In the code, I have created 2 dictionaries; word2idx(word to index) and idx2word(index to word).**
-
-So, in the example below, the input won't be **"dog"** instead it will be **word2idx["dog"].**
-
-For example, Let the image encoding be *IE* and the caption for *IE* is **`<start>` A dog is running in the grass . `<end>`**
-
-<br />
-![table](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/table.jpg "table")
-
-So this is how we will give the input to the model and it has to predict 1 word out of 8256 words.
-Because of such input we will need to design our own generator and give the input to the model batch-wise.
-
-<script src="https://gist.github.com/yashk2810/3d22304eed391adcb2273cd2806718dc.js"></script>
-
-## Model
-* For image model, I am using a dense layer with input dimension = 2048 which is repeated. 
-
-* For the caption model, I am using a 300 dimensional embedding followed by a LSTM layer with return sequences set to True which is followed by a TimeDistributed Dense layer. 
-
-* For the decoder, I am merging the image model and the caption model which is then put through a Birectional LSTM and Dense layer with 8256 hidden neurons and softmax activation.
-
-<script src="https://gist.github.com/yashk2810/272649b477fb9c26b39bb1d16c4a7e8f.js"></script>
-
-**After training it for approximately 35 epochs, the loss value drops down to 2.8876**.
 
 ## Predictions
 
@@ -75,8 +46,6 @@ I have used 2 methods for predicting the captions.
 * **Beam Search** is where we take top **k** predictions, feed them again in the model and then sort them using the probabilities returned by the model. So, the list will always contain the top **k** predictions. In the end, we take the one with the highest probability and go through it till we encounter `<end>` or reach the maximum caption length. 
 
 <script src="https://gist.github.com/yashk2810/f14671f6ad2453d6b7fe029095bfeb84.js"></script>
-
-Beam search with k=3 *usually* perform the best.
 
 Finally, here are some results that I got. The rest of the results are in the jupyter notebook and you can generate your own by writing some code at the end.
 
