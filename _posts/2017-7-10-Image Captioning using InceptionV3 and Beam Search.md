@@ -26,9 +26,9 @@ In Image Captioning, a CNN is used to extract the features from an image which i
 
 * I used VGG-16 as my first model for extracting the features. I took *an hour* to extract features from 6000 training images. This is very slow. Imagine how much time it will take to extract features in the MS-COCO dataset which has 80,000 training images.
 
-* Resnet-50 was the second model I tried for extracting features. But I didn't train the model for long time because InceptionV3 has a better accuracy than Resnet-50.
+* Resnet-50 was the second model I tried for extracting features. But I didn't train the model for long time because InceptionV3 has a better accuracy than Resnet-50 and almost the same number of parameters.
 
-* Finally, it was the time of InceptionV3. Since it has very less parameters as compared to VGG-16, it took 20 mins for InceptionV3 to extract features from 6000 images. I also ran this on MS-COCO dataset which contains 80,000 training examples and it took 2 hours and 45 minutes to extract the features.
+* Finally, it was the time of InceptionV3. Since it has very less parameters as compared to VGG-16, it took *20 mins* for InceptionV3 to extract features from 6000 images. I also ran this on MS-COCO dataset which contains 80,000 training examples and it took *2 hours and 45 minutes* to extract the features.
 
 ## Training and Hyperparameters
 
@@ -36,13 +36,28 @@ For creating the model, the captions has to be put in an embedding. I wanted to 
 
 ![final_model](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/final_model.jpg "final_model")
 
-* The optimizer used was RMSprop.
+* The optimizer used was RMSprop and the batch size was set to 128.
 
 * I trained the model using the VGG-16 extracted features for about 50 epochs and got a loss value of **2.77**.
 
 * After training the model using the InceptionV3 extracted features for about 35 epochs and got a loss value of **2.8876**. 
   * I trained this model for another 15 epochs and the loss value was not going below 2.88.
-  * I tried learning rate annealing, changing the optimizer, changing the model, the embedding size and almost every other hyperparameter.
+  
+  * I tried learning rate annealing, changing the optimizer, changing the model architecture, the embedding size and almost every other hyperparameter. I was stuck.
+  
+  * One evening while listening to Hans Zimmer's Interstellar track, No time for Caution, it struck me that there was one hyperparameter that I hadn't tried. It was, wait for it... **BATCH SIZE**.
+  
+  * So, I changed the batch size from 128 to 256 and *voila*, the loss dropped to **2.76** beating VGG-16 at 36th epoch(I got 2.8876 at 35th epoch and I trained the model from there only).
+  
+  * Whenever the loss started to flatten out, I would double my batch size and the loss started to decrease again. I reached a batch size of 2048 and tried going to 4096 but got a *memory error*.
+  
+  * The final loss value I got was **1.5987** after training it for **50 epochs**.
+  
+  * The reason changing the batch size worked was because if the batch size is small, the **gradients are an approximation of the real gradients**. So, it will take longer to find a good solution. If I would have trained the model for another 100 epochs at 128 as my batch size, hopefully the loss would have decreased. 
+  
+  * Moreover, increasing my batch size decreased by training time. First at batch size of 128 it took approximately 1000 seconds for an epoch. With a batch size of 2048, it took me 343 seconds per epoch.
+  
+  * So if you are stuck in a similar situation, try changing the batch size.
 
 ## Predictions
 
