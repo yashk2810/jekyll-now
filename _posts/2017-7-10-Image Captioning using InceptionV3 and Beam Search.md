@@ -36,7 +36,9 @@ For creating the model, the captions has to be put in an embedding. I wanted to 
 
 ![final_model](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/final_model.jpg "final_model")
 
+* I trained VGG-16 for about 50 epochs and got a loss value of **2.77*.
 
+* 
 
 ## Predictions
 
