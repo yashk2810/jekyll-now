@@ -43,7 +43,7 @@ For creating the model, the captions has to be put in an embedding. I wanted to 
 * After training the model using the InceptionV3 extracted features for about 35 epochs and got a loss value of **2.8876**. 
   * I trained this model for another 15 epochs and the loss value was not going below 2.88.
   
-  * I tried learning rate annealing, changing the optimizer, changing the model architecture, the embedding size and almost every other hyperparameter. I was stuck.
+  * I tried learning rate annealing, changing the optimizer, changing the model architecture, the embedding size, number of LSTM units and almost every other hyperparameter. I was stuck.
   
   * One evening while listening to Hans Zimmer's Interstellar track, No time for Caution, it struck me that there was one hyperparameter that I hadn't tried. It was, wait for it... **BATCH SIZE**.
   
