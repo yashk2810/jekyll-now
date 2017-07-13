@@ -72,9 +72,10 @@ I have used 2 methods for predicting the captions.
 
 Finally, here are some results that I got. The rest of the results are in the jupyter notebook and you can generate your own by writing some code at the end.
 
-![two](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/first%202%20images.jpeg "two")
-![three](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/3%20images.jpeg "three")
-![last](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/last.jpeg "last")
+!["first2"](https://raw.githubusercontent.com/yashk2810/Image-Captioning/master/images/first2.jpg "first2")
+!["second2"](https://raw.githubusercontent.com/yashk2810/Image-Captioning/master/images/second2.jpg "second2")
+!["third"](https://raw.githubusercontent.com/yashk2810/Image-Captioning/master/images/third.jpg "third")
+!["last1"](https://raw.githubusercontent.com/yashk2810/Image-Captioning/master/images/last1.jpg "last1")
 
 
 ## Next Steps
