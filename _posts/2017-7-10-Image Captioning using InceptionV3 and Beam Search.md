@@ -36,9 +36,10 @@ For creating the model, the captions has to be put in an embedding. I wanted to 
 
 ![final_model](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/final_model.jpg "final_model")
 
-* I trained VGG-16 for about 50 epochs and got a loss value of **2.77**.
+* I trained the model using the VGG-16 extracted features for about 50 epochs and got a loss value of **2.77**.
 
-* 
+* After training the model using the InceptionV3 extracted features for about 35 epochs and got a loss value of **2.8876**. 
+  * I trained this model for another 10 models and the loss value was not a
 
 ## Predictions
 
