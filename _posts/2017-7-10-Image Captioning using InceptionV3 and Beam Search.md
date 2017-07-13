@@ -32,7 +32,9 @@ In Image Captioning, a CNN is used to extract the features from an image which i
 
 ## Training and Hyperparameters
 
-For creating the model, the captions has to be put in an embedding. I wanted to try Word2Vec to get the pre-trained embedding weights of my vocabulary, but it didn't pan out. So, I took some ideas from it by setting the embedding size to 300.
+For creating the model, the captions has to be put in an embedding. I wanted to try Word2Vec to get the pre-trained embedding weights of my vocabulary, but it didn't pan out. So, I took some ideas from it by setting the embedding size to 300. The image below is the model that I used.
+
+![final_model](https://raw.githubusercontent.com/yashk2810/yashk2810.github.io/master/images/final_model.jpg "final_model")
 
 
 
