@@ -57,12 +57,12 @@ For creating the model, the captions has to be put in an embedding. I wanted to 
   
   * Moreover, increasing my batch size decreased by training time. First at batch size of 128 it took approximately 1000 seconds for an epoch. With a batch size of 2048, it took me 343 seconds per epoch.
   
-  * So if you are stuck in a similar situation, try changing the batch size.
+  * So if you are stuck in a similar situation, try increasing the batch size.
 
 ## Predictions
 
 I have used 2 methods for predicting the captions.
-* **Max Search** is where the maximum value index(argmax) in the 8256 long predicted vector is extracted and appended to the result. This is done until we hit `<end>` or the maximum length of the caption.
+* **Argmax Search** is where the maximum value index(argmax) in the 8256 long predicted vector is extracted and appended to the result. This is done until we hit `<end>` or the maximum length of the caption.
 
 <script src="https://gist.github.com/yashk2810/5d7cdeca9d5bbf9d4e2b80d7a0d3d256.js"></script>
 
