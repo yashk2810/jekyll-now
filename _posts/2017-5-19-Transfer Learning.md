@@ -185,6 +185,8 @@ This new model can contain more convolutional layers or only dense layers or a c
 
 The <a href="http://course.fast.ai/index.html">Deep learning</a> course offered by Jeremy Howard and Rachel Thomas is fantastic. I highly recommend you to complete this course.
 
+*If you’re interested in collaborating, discussing or working with me on an exciting idea, contact me at yash DOT katariya10 AT gmail.com*
+
 <br />
 Until next time,
 
