@@ -203,6 +203,8 @@ The code for visualization of Convolutional Layers can be found <a href="https:/
 This is an awesome neural network 3D simulation video based on the MNIST dataset.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3JQ3hYko51Y?ecver=1" frameborder="0" allowfullscreen></iframe>
 
+*If you're interested in collaborating, discussing or working with me on an exciting idea, contact me at yash DOT katariya10 AT gmail.com*
+
 <br />
 Until next time,
 
