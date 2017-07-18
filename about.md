@@ -10,7 +10,7 @@ I have worked on deep learning, web development and cryptography. Every project 
 
 Deep learning is changing the industry and applying it in every aspect of our lives would be revolutionary. I want to be a part of that journey.
 
-**Looking for work/internship opportunities.** 
+**Looking for internship opportunities in deep learning/machine learning** 
 
 ### Contact me
 
