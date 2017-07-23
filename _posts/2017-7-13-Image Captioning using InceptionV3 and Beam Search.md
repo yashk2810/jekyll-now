@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Image Captioning and Batch Size as an Hyperparameter
+title: Image Captioning using InceptionV3 and Beam Search
 comments: true
 ---
 
