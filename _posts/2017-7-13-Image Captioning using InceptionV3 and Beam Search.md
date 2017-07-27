@@ -56,7 +56,7 @@ For creating the model, the captions has to be put in an embedding. I wanted to 
   
   * Moreover, increasing my batch size decreased by training time. First at batch size of 128 it took approximately 1000 seconds for an epoch. With a batch size of 2048, it took me 343 seconds per epoch.
   
-  * So if you are stuck in a similar situation, try increasing the batch size.
+  * So if you are stuck in a similar situation, try increasing the batch size. Do not increase the batch size too much as the model will lose the generalization ability. Refer this <a href="https://arxiv.org/pdf/1609.04836.pdf">paper</a>.
 
 ## Predictions
 
