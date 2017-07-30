@@ -13,7 +13,7 @@ The entire code is in the jupyter notebook, so that should hopefully make it eas
 
 I have used <a href="https://illinois.edu/fb/sec/1713398">Flickr8k dataset</a>(size 1 GB). MS-COCO and Flickr30K are other datasets that you can use. Flickr8K has 6000 training images, 1000 validation images and 1000 testing images. Each image has 5 captions describing it.
 
-I have written the code for MS-COCO but haven't run the model because I am a student right now and it is expensive for me to run a model for weeks. So if you have the resources, you can run the model. The code for the MS-COCO dataset is not clean but you can find the relevant parts and run it. Download the dataset and the captions <a href="http://mscoco.org/dataset/#download">here</a>. The notebook for MS-COCO lives <a href="https://www.dropbox.com/s/zpndo8pdknoqk5k/MS-COCO%20InceptionV3.ipynb">here</a>.
+I have written the code for MS-COCO but haven't run the model because I am a student right now and it is expensive for me to run a model for weeks. So if you have the resources, you can run the model. The code for the MS-COCO dataset is not clean but you can find the relevant parts and run it. Download the dataset and the captions <a href="http://mscoco.org/dataset/#download">here</a>. The notebook for MS-COCO lives <a href="https://www.dropbox.com/s/d0kjtcrz17ak3x1/MS-COCO%20InceptionV3.ipynb">here</a>.
 
 ## Image feature extraction
 
