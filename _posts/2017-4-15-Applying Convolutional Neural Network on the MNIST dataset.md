@@ -93,7 +93,7 @@ Let's create the model that will classify the images (the most interesting part!
 # Three steps to create a CNN
 # 1. Convolution
 # 2. Activation
-# 3. Polling
+# 3. Pooling
 # Repeat Steps 1,2,3 for adding more hidden layers
 
 # 4. After that make a fully connected network
