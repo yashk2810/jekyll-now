@@ -1,13 +1,13 @@
 #
 # This file contains configuration flags to customize your site
 #
- 
+
 # Name of your site (displayed in the header)
 name: Yash Katariya
 
 # Short bio or description (displayed in the header)
 description: CS Grad @ NCSU
-
+ 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://avatars0.githubusercontent.com/u/14262417?v=3&s=400
 
